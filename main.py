@@ -1,7 +1,7 @@
 import streamlit as st
 st.title("Losted items in Oran")
 st.header("Losted item")
-lost = st.text_input("what did you lost ??","phone")
+lost = st.text_input("what did you lost ??","glasses")
 st.header("contact")
 lo = st.text_input("how can we contact you??","+000000000")
 st.header("Date")
