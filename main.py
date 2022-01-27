@@ -2,7 +2,16 @@ import sqlite3
 import streamlit as st 
 conn = sqlite3.connect("item.db",check_same_thread=False)
 cur = conn.cursor()
-
+cur.execute('''CREATE TABLE IF NOT EXISTS items(
+                    item TEXT,
+                    num TEXT,
+                    time TEXT,
+                    date TEXT,
+                    mail TEXT,
+                    txt TEXT,
+                    PRIMARY KEY (txt , item,num,time,date,mail)
+                )''')
+conn.commit()
 def submit(item,num,time,date,mail,txt):
     cur.execute("INSERT INTO items VALUES (?,?,?,?,?,?)" , (item,num,time,date,mail,txt))
     conn.commit()
@@ -27,16 +36,7 @@ def form():
         button = st.form_submit_button(label="submit")
         if button :
             try : 
-                cur.execute('''CREATE TABLE IF NOT EXISTS items(
-                    item TEXT,
-                    num TEXT,
-                    time TEXT,
-                    date TEXT,
-                    mail TEXT,
-                    txt TEXT,
-                    PRIMARY KEY (txt , item,num,time,date,mail)
-                )''')
-                conn.commit()
+                
                 submit(item,num,time,date,mail,txt)
                 st.success("you will find your item soon")
             except:
