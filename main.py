@@ -48,7 +48,7 @@ def form():
     r = c.fetchall()
     conn.close()
     #st.write(c.fetchall())
-    st.title("losted items")
+    st.title("Losted items")
     if r != None:
         a = 0
         for o in r:
